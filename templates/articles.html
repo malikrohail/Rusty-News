@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        .filter-form {
+            margin-bottom: 20px;
+        }
+
+        .filter-form label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .filter-form select,
+        .filter-form input[type="text"] {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .filter-form button {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Articles</h1>
+    
+    <form class="filter-form" id="filterForm" method="GET" action="/articles">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="">All</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="health">Health</option>
+            <option value="science">Science</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+        </select>
+        
+        <label for="keyword">Keyword:</label>
+        <input type="text" name="keyword" id="keyword">
+        
+        <button type="submit">Filter</button>
+    </form>
+    
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Source</th>
+            <th>Published At</th>
+        </tr>
+        {% for article in articles %}
+        <tr>
+            <td><a href="{{ article.url }}">{{ article.title }}</a></td>
+            <td>{{ article.author }}</td>
+            <td>{{ article.source }}</td>
+            <td>{{ article.published_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <script>
+        // Submit the form when category or keyword value changes
+        document.getElementById('category').addEventListener('change', function() {
+            document.getElementById('filterForm').submit();
+        });
+
+        document.getElementById('keyword').addEventListener('change', function() {
+            document.getElementById('filterForm').submit();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+  <div class="container py-5">
+    <h1>Welcome to Rusty News!</h1>
+    {% for article in articles %}
+      <div class="card my-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+
+          <h6 class="card-subtitle mb-2 text-muted">{{ article.author }}</h6>
+          <p class="card-text">{{ article.source }}</p>
+          <a href="{{ article.url }}" class="card-link" target="_blank">Read more</a>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="/articles" class="btn btn-primary">View All Articles</a>
+  </div>
+{% endblock content %}
