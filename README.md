@@ -40,9 +40,13 @@ NEWS_API_KEY=your_news_api_key
 The project is modularized into different components:
 
 main.rs: Initializes the HTTP server, sets up routes, and prepares the application data.
+
 handlers.rs: Handles the fetching of articles from NewsAPI.
+
 models.rs: Defines the data structures for articles.
+
 utils.rs: Contains utility functions for article formatting.
+
 Templates for the application's front-end are located in the templates directory.
 
 ## License
